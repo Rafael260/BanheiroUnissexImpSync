@@ -4,26 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Banheiro {
+	
 	private int numeroVagas;
-	// Controle de quais pessoas estao entrando
+	//Controle de quais pessoas estao entrando
 	private String sexo;
-	// Tempo maximo que uma pessoa passa no banheiro
-	Object listaLock;
+	//Tempo maximo que uma pessoa passa no banheiro
 	private int tempoMaximo;
 	private List<Pessoa> pessoasUsando;
-
-	// Variaveis para sincronizacao
-	Object sexoAtual;
-	Object banheiroLotado;
 
 	public Banheiro(int vagas, int tempoMaximo) {
 		this.numeroVagas = vagas;
 		this.sexo = "vazio";
 		this.tempoMaximo = tempoMaximo;
 		this.pessoasUsando = new ArrayList<>();
-		this.listaLock = new Object();
-		this.sexoAtual = new Object();
-		this.banheiroLotado = new Object();
 	}
 
 	// <getters and setters>
@@ -110,12 +103,12 @@ public class Banheiro {
 		// Se o banheiro ta vazio, esta livre para que qualquer pessoa (homem ou
 		// mulher) possa entrar
 		if (this.banheiroVazio()) {
+			//Coloco o sexo vazio para que pessoas de outro sexo possam usar o banheiro
 			this.setSexo("vazio");
 			notifyAll();
 		}
 		else{
 			notify();
 		}
-
 	}
 }

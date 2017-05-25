@@ -10,7 +10,6 @@ public class Main {
 
 	public static void main(String[] args) {
 		Banheiro banheiro = new Banheiro(4,3);
-//		Semaphore semaforo = new Semaphore(banheiro.getNumeroVagas());
 		int numeroPessoasParaTeste = 14;
 		Random random = new Random();
 		boolean homem;
